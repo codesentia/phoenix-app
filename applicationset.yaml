@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: phoenix-apps
+  name: phoenix-app
   namespace: argocd
 spec:
   generators:
     - git:
-        repoURL: https://github.com/YOUR_ORG/phoenix-apps
+        repoURL: https://github.com/codesentia/phoenix-app
         revision: main
         directories:
           - path: apps/*
@@ -18,7 +18,7 @@ spec:
     spec:
       project: team-phoenix
       source:
-        repoURL: https://github.com/YOUR_ORG/phoenix-apps
+        repoURL: https://github.com/codesentia/phoenix-app
         targetRevision: main
         path: '{{path}}'
       destination:
