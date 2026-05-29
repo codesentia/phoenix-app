@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: phoenix-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/YOUR_ORG/phoenix-apps
+        revision: main
+        directories:
+          - path: apps/*
+  template:
+    metadata:
+      name: 'phoenix-{{path.basename}}'
+      labels:
+        team: phoenix
+    spec:
+      project: team-phoenix
+      source:
+        repoURL: https://github.com/YOUR_ORG/phoenix-apps
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: team-phoenix
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false

@@ -1,0 +1,8 @@
+# Ignore temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Ignore local kustomize output
+kustomization.yaml

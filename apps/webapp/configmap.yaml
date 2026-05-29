@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webapp-html
+  namespace: team-phoenix
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Phoenix Team - EKS Platform</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 50px auto;
+                padding: 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }
+            .container {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 30px;
+                backdrop-filter: blur(10px);
+            }
+            h1 { margin-top: 0; }
+            .info { background: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 5px; margin: 20px 0; }
+            code { background: rgba(0, 0, 0, 0.3); padding: 2px 6px; border-radius: 3px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🚀 Welcome to Phoenix Team</h1>
+            <p>This application is running on the EKS shared platform!</p>
+
+            <div class="info">
+                <h3>Platform Features:</h3>
+                <ul>
+                    <li>✅ Isolated namespace with RBAC</li>
+                    <li>✅ Resource quotas and limits</li>
+                    <li>✅ Network policies for security</li>
+                    <li>✅ GitOps deployment via ArgoCD</li>
+                    <li>✅ Automatic scaling and health checks</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <h3>Deployment Info:</h3>
+                <p><strong>Namespace:</strong> <code>team-phoenix</code></p>
+                <p><strong>Application:</strong> <code>webapp</code></p>
+                <p><strong>Replicas:</strong> 2 pods</p>
+                <p><strong>Image:</strong> nginx:1.27-alpine</p>
+            </div>
+
+            <p style="margin-top: 30px; text-align: center; opacity: 0.8;">
+                Managed by ArgoCD | EKS Platform 2026
+            </p>
+        </div>
+    </body>
+    </html>
